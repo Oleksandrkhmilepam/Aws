@@ -1,0 +1,19 @@
+{
+  "version": "1.0",
+  "name": "hello_world",
+  "func_name": "lambda_handler.handler",
+  "resource_type": "lambda",
+  "runtime": "python3.10",
+  "memory": 128,
+  "timeout": 100,
+  "lambda_path": "hello_world",
+  "dependencies": [],
+  "event_sources": [],
+  "env_variables": {},
+  "publish_version": true,
+  "alias": "${lambdas_alias_name}",
+  "url_config": {},
+  "ephemeral_storage": 512,
+  "logs_expiration": "${logs_expiration}",
+  "tags": {}
+}

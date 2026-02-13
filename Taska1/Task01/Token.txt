@@ -1,0 +1,8 @@
+username: Oleksandrkhmilepam
+token: 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
+Repository url: https://github.com/Oleksandrkhmilepam/Aws
+https://Oleksandrkhmilepam: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:https://github.com/Oleksandrkhmilepam/Aws
+
+Permissopns
+condents
+read
