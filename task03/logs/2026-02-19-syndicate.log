@@ -1,0 +1,109 @@
+2026-02-19 03:20:36,184 [INFO] USER:Alexander s3_resource.py:41:validate_bucket_name LOG: Starting validating bucket name 'syndicate-education-platform-custom-sandbox-artifacts-3451'
+2026-02-19 03:20:36,184 [INFO] USER:Alexander s3_resource.py:74:validate_bucket_name LOG: Finished validating bucket name 'syndicate-education-platform-custom-sandbox-artifacts-3451'
+2026-02-19 03:20:36,185 [INFO] USER:Alexander helper.py:669:convert LOG: Stripping run_id:JAP-23,task_id:task03,topic_id:stm,user_id:qsr2rkne from "," a bit..
+2026-02-19 03:20:36,185 [INFO] USER:Alexander helper.py:673:convert LOG: Converting: run_id:JAP-23,task_id:task03,topic_id:stm,user_id:qsr2rkne to dict..
+2026-02-19 03:20:36,185 [INFO] USER:Alexander helper.py:685:convert LOG: Converted to such a dict: {'run_id': 'JAP-23', 'task_id': 'task03', 'topic_id': 'stm', 'user_id': 'qsr2rkne'}
+2026-02-19 03:20:36,220 [WARNING] USER:Alexander generator.py:57:generate_configuration_files LOG: Access_key and secret_key weren't passed. Attempting to load them
+2026-02-19 03:20:37,171 [ERROR] USER:Alexander generator.py:71:generate_configuration_files LOG: Invalid credentials provided, please specify the correct one
+2026-02-19 03:20:37,171 [ERROR] USER:Alexander generator.py:73:generate_configuration_files LOG: Error while account_id obtaining
+Traceback (most recent call last):
+  File "D:\CREATIVE STUDIO\CODE\Phyton\Lib\site-packages\syndicate\core\conf\generator.py", line 68, in generate_configuration_files
+    caller_identity = sts.get_caller_identity()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CREATIVE STUDIO\CODE\Phyton\Lib\site-packages\syndicate\connection\helper.py", line 144, in wrapper
+    raise e
+  File "D:\CREATIVE STUDIO\CODE\Phyton\Lib\site-packages\syndicate\connection\helper.py", line 119, in wrapper
+    return handler_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CREATIVE STUDIO\CODE\Phyton\Lib\site-packages\syndicate\connection\sts_connection.py", line 83, in get_caller_identity
+    return self.client.get_caller_identity()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CREATIVE STUDIO\CODE\Phyton\Lib\site-packages\botocore\client.py", line 570, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CREATIVE STUDIO\CODE\Phyton\Lib\site-packages\botocore\context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CREATIVE STUDIO\CODE\Phyton\Lib\site-packages\botocore\client.py", line 1031, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (InvalidClientTokenId) when calling the GetCallerIdentity operation: The security token included in the request is invalid
+2026-02-19 03:21:23,425 [INFO] USER:Alexander handlers.py:118:syndicate LOG: Configuration used: D:\CREATIVE STUDIO\CODE\GitBash\task03
+2026-02-19 03:21:23,427 [ERROR] USER:Alexander decorators.py:148:wrapper LOG: ConfigurationError occurred: The syndicate configuration file is not found in the directory 'D:\CREATIVE STUDIO\CODE\GitBash\task03'
+2026-02-19 03:21:23,504 [ERROR] USER:Alexander decorators.py:149:wrapper LOG: Traceback (most recent call last):
+  File "D:\CREATIVE STUDIO\CODE\Phyton\Lib\site-packages\syndicate\core\decorators.py", line 138, in wrapper
+    return_code = func(*args, **kwargs)
+                  ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CREATIVE STUDIO\CODE\Phyton\Lib\site-packages\syndicate\core\handlers.py", line 119, in syndicate
+    initialize_connection()
+  File "D:\CREATIVE STUDIO\CODE\Phyton\Lib\site-packages\syndicate\core\__init__.py", line 109, in initialize_connection
+    CONFIG = ConfigHolder(CONF_PATH)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CREATIVE STUDIO\CODE\Phyton\Lib\site-packages\syndicate\core\conf\processor.py", line 71, in __init__
+    raise ConfigurationError(
+syndicate.exceptions.ConfigurationError: The syndicate configuration file is not found in the directory 'D:\CREATIVE STUDIO\CODE\GitBash\task03'
+Traceback (most recent call last):
+  File "D:\CREATIVE STUDIO\CODE\Phyton\Lib\site-packages\syndicate\core\decorators.py", line 138, in wrapper
+    return_code = func(*args, **kwargs)
+                  ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CREATIVE STUDIO\CODE\Phyton\Lib\site-packages\syndicate\core\handlers.py", line 119, in syndicate
+    initialize_connection()
+  File "D:\CREATIVE STUDIO\CODE\Phyton\Lib\site-packages\syndicate\core\__init__.py", line 109, in initialize_connection
+    CONFIG = ConfigHolder(CONF_PATH)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CREATIVE STUDIO\CODE\Phyton\Lib\site-packages\syndicate\core\conf\processor.py", line 71, in __init__
+    raise ConfigurationError(
+syndicate.exceptions.ConfigurationError: The syndicate configuration file is not found in the directory 'D:\CREATIVE STUDIO\CODE\GitBash\task03'
+2026-02-19 03:24:51,303 [INFO] USER:Alexander s3_resource.py:41:validate_bucket_name LOG: Starting validating bucket name 'syndicate-education-platform-custom-sandbox-artifacts-3451'
+2026-02-19 03:24:51,303 [INFO] USER:Alexander s3_resource.py:74:validate_bucket_name LOG: Finished validating bucket name 'syndicate-education-platform-custom-sandbox-artifacts-3451'
+2026-02-19 03:24:51,304 [INFO] USER:Alexander helper.py:669:convert LOG: Stripping run_id:JAP-23,task_id:task03,topic_id:stm,user_id:qsr2rkne from "," a bit..
+2026-02-19 03:24:51,304 [INFO] USER:Alexander helper.py:673:convert LOG: Converting: run_id:JAP-23,task_id:task03,topic_id:stm,user_id:qsr2rkne to dict..
+2026-02-19 03:24:51,304 [INFO] USER:Alexander helper.py:685:convert LOG: Converted to such a dict: {'run_id': 'JAP-23', 'task_id': 'task03', 'topic_id': 'stm', 'user_id': 'qsr2rkne'}
+2026-02-19 03:24:51,340 [WARNING] USER:Alexander generator.py:57:generate_configuration_files LOG: Access_key and secret_key weren't passed. Attempting to load them
+2026-02-19 03:24:52,289 [WARNING] USER:Alexander generator.py:77:generate_configuration_files LOG: The config_path property is not specified. The working directory is used
+2026-02-19 03:24:52,290 [ERROR] USER:Alexander __init__.py:47:_mkdir LOG: [WinError 183] Невозможно создать файл, так как он уже существует: 'D:\\CREATIVE STUDIO\\CODE\\GitBash\\task03\\.syndicate-config-dev'
+2026-02-19 03:24:52,297 [WARNING] USER:Alexander generator.py:94:generate_configuration_files LOG: The "project_path" property is not specified. The working directory will be used as a project path. To change the path, edit the syndicate.yml by path D:\CREATIVE STUDIO\CODE\GitBash\task03\.syndicate-config-dev
+2026-02-19 03:24:52,302 [INFO] USER:Alexander generator.py:158:generate_configuration_files LOG: Syndicate initialization has been completed. 
+Set SDCT_CONF:
+Unix: export SDCT_CONF="D:\CREATIVE STUDIO\CODE\GitBash\task03\.syndicate-config-dev"
+Windows: setx SDCT_CONF D:\CREATIVE STUDIO\CODE\GitBash\task03\.syndicate-config-dev
+2026-02-19 03:24:52,305 [INFO] USER:Alexander helper.py:359:timed LOG: Stage config, elapsed time: 0:00:00.965675
+2026-02-19 03:25:12,638 [INFO] USER:Alexander handlers.py:118:syndicate LOG: Configuration used: D:\CREATIVE STUDIO\CODE\GitBash\task03
+2026-02-19 03:25:12,640 [ERROR] USER:Alexander decorators.py:148:wrapper LOG: ConfigurationError occurred: The syndicate configuration file is not found in the directory 'D:\CREATIVE STUDIO\CODE\GitBash\task03'
+2026-02-19 03:25:12,644 [ERROR] USER:Alexander decorators.py:149:wrapper LOG: Traceback (most recent call last):
+  File "D:\CREATIVE STUDIO\CODE\Phyton\Lib\site-packages\syndicate\core\decorators.py", line 138, in wrapper
+    return_code = func(*args, **kwargs)
+                  ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CREATIVE STUDIO\CODE\Phyton\Lib\site-packages\syndicate\core\handlers.py", line 119, in syndicate
+    initialize_connection()
+  File "D:\CREATIVE STUDIO\CODE\Phyton\Lib\site-packages\syndicate\core\__init__.py", line 109, in initialize_connection
+    CONFIG = ConfigHolder(CONF_PATH)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CREATIVE STUDIO\CODE\Phyton\Lib\site-packages\syndicate\core\conf\processor.py", line 71, in __init__
+    raise ConfigurationError(
+syndicate.exceptions.ConfigurationError: The syndicate configuration file is not found in the directory 'D:\CREATIVE STUDIO\CODE\GitBash\task03'
+Traceback (most recent call last):
+  File "D:\CREATIVE STUDIO\CODE\Phyton\Lib\site-packages\syndicate\core\decorators.py", line 138, in wrapper
+    return_code = func(*args, **kwargs)
+                  ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CREATIVE STUDIO\CODE\Phyton\Lib\site-packages\syndicate\core\handlers.py", line 119, in syndicate
+    initialize_connection()
+  File "D:\CREATIVE STUDIO\CODE\Phyton\Lib\site-packages\syndicate\core\__init__.py", line 109, in initialize_connection
+    CONFIG = ConfigHolder(CONF_PATH)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CREATIVE STUDIO\CODE\Phyton\Lib\site-packages\syndicate\core\conf\processor.py", line 71, in __init__
+    raise ConfigurationError(
+syndicate.exceptions.ConfigurationError: The syndicate configuration file is not found in the directory 'D:\CREATIVE STUDIO\CODE\GitBash\task03'
+2026-02-19 03:27:40,853 [INFO] USER:Alexander s3_resource.py:41:validate_bucket_name LOG: Starting validating bucket name 'syndicate-education-platform-custom-sandbox-artifacts-3451'
+2026-02-19 03:27:40,854 [INFO] USER:Alexander s3_resource.py:74:validate_bucket_name LOG: Finished validating bucket name 'syndicate-education-platform-custom-sandbox-artifacts-3451'
+2026-02-19 03:27:40,854 [INFO] USER:Alexander helper.py:669:convert LOG: Stripping run_id:JAP-23,task_id:task03,topic_id:stm,user_id:qsr2rkne from "," a bit..
+2026-02-19 03:27:40,855 [INFO] USER:Alexander helper.py:673:convert LOG: Converting: run_id:JAP-23,task_id:task03,topic_id:stm,user_id:qsr2rkne to dict..
+2026-02-19 03:27:40,855 [INFO] USER:Alexander helper.py:685:convert LOG: Converted to such a dict: {'run_id': 'JAP-23', 'task_id': 'task03', 'topic_id': 'stm', 'user_id': 'qsr2rkne'}
+2026-02-19 03:27:40,890 [WARNING] USER:Alexander generator.py:57:generate_configuration_files LOG: Access_key and secret_key weren't passed. Attempting to load them
+2026-02-19 03:27:41,884 [WARNING] USER:Alexander generator.py:77:generate_configuration_files LOG: The config_path property is not specified. The working directory is used
+2026-02-19 03:27:41,885 [ERROR] USER:Alexander __init__.py:47:_mkdir LOG: [WinError 183] Невозможно создать файл, так как он уже существует: 'D:\\CREATIVE STUDIO\\CODE\\GitBash\\task03\\.syndicate-config-dev'
+2026-02-19 03:27:41,885 [WARNING] USER:Alexander generator.py:94:generate_configuration_files LOG: The "project_path" property is not specified. The working directory will be used as a project path. To change the path, edit the syndicate.yml by path D:\CREATIVE STUDIO\CODE\GitBash\task03\.syndicate-config-dev
+2026-02-19 03:27:41,889 [INFO] USER:Alexander generator.py:158:generate_configuration_files LOG: Syndicate initialization has been completed. 
+Set SDCT_CONF:
+Unix: export SDCT_CONF="D:\CREATIVE STUDIO\CODE\GitBash\task03\.syndicate-config-dev"
+Windows: setx SDCT_CONF D:\CREATIVE STUDIO\CODE\GitBash\task03\.syndicate-config-dev
+2026-02-19 03:27:41,892 [INFO] USER:Alexander helper.py:359:timed LOG: Stage config, elapsed time: 0:00:01.002030
