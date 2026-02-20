@@ -1,0 +1,249 @@
+{
+  "lambda-basic-execution": {
+    "resource_type": "iam_policy",
+    "policy_content": {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Effect": "Allow",
+          "Action": [
+            "logs:CreateLogGroup",
+            "logs:CreateLogStream",
+            "logs:PutLogEvents",
+            "dynamodb:GetItem",
+            "dynamodb:Query",
+            "dynamodb:Scan",
+            "dynamodb:PutItem",
+            "dynamodb:UpdateItem",
+            "dynamodb:DeleteItem",
+            "dynamodb:BatchGetItem",
+            "dynamodb:BatchWriteItem",
+            "cognito-idp:AdminInitiateAuth",
+            "cognito-idp:SignUp",
+            "cognito-idp:AdminCreateUser",
+            "cognito-idp:AdminUpdateUserAttributes",
+            "cognito-idp:ListUsers"
+          ],
+          "Resource": "*"
+        }
+      ]
+    },
+    "tags": {}
+  },
+
+  "api_handler": {
+    "resource_type": "lambda_function",
+    "name": "api_handler",
+    "runtime": "python3.9",
+    "handler": "api_handler.lambda_handler",
+    "memory": 256,
+    "timeout": 30,
+    "aliases": {
+      "learn": {}
+    },
+    "role": "lambda-basic-execution",
+    "dependencies": [
+      {
+        "resource_name": "Tables",
+        "resource_type": "dynamodb_table"
+      },
+      {
+        "resource_name": "Reservations",
+        "resource_type": "dynamodb_table"
+      },
+      {
+        "resource_name": "simple-booking-userpool",
+        "resource_type": "cognito_user_pool"
+      }
+    ]
+  },
+
+  "simple-booking-userpool": {
+    "resource_type": "cognito_user_pool",
+    "name": "simple-booking-userpool",
+    "alias_attributes": ["email"],
+    "auto_verified_attributes": ["email"],
+    "password_policy": {
+      "minimum_length": 8,
+      "require_lowercase": true,
+      "require_numbers": true,
+      "require_symbols": true,
+      "require_uppercase": true
+    },
+    "schema": [
+      {
+        "name": "email",
+        "attribute_data_type": "String",
+        "mutable": true,
+        "required": true
+      }
+    ]
+  },
+
+  "Tables": {
+    "resource_type": "dynamodb_table",
+    "name": "Tables",
+    "hash_key_name": "id",
+    "hash_key_type": "S",
+    "read_capacity": 5,
+    "write_capacity": 5,
+    "stream_enabled": true,
+    "stream_view_type": "NEW_AND_OLD_IMAGES"
+  },
+
+  "Reservations": {
+    "resource_type": "dynamodb_table",
+    "name": "Reservations",
+    "hash_key_name": "id",
+    "hash_key_type": "S",
+    "read_capacity": 5,
+    "write_capacity": 5,
+    "stream_enabled": true,
+    "stream_view_type": "NEW_AND_OLD_IMAGES"
+  },
+
+  "task13_api": {
+    "resource_type": "api_gateway",
+    "name": "task13_api",
+    "stage_name": "api",
+    "cors": true,
+    "resources": {
+      "/signup": {
+        "POST": {
+          "authorization_type": "NONE",
+          "enable_cors": true,
+          "integration": {
+            "type": "AWS_PROXY",
+            "http_method": "POST",
+            "uri": "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/${api_handler.arn}/invocations"
+          }
+        }
+      },
+      "/signin": {
+        "POST": {
+          "authorization_type": "NONE",
+          "enable_cors": true,
+          "integration": {
+            "type": "AWS_PROXY",
+            "http_method": "POST",
+            "uri": "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/${api_handler.arn}/invocations"
+          }
+        }
+      },
+      "/tables": {
+        "POST": {
+          "authorization_type": "COGNITO_USER_POOLS",
+          "authorizer_id": "CognitoAuthorizer",
+          "enable_cors": true,
+          "integration": {
+            "type": "AWS_PROXY",
+            "http_method": "POST",
+            "uri": "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/${api_handler.arn}/invocations"
+          }
+        },
+        "GET": {
+          "authorization_type": "COGNITO_USER_POOLS",
+          "authorizer_id": "CognitoAuthorizer",
+          "enable_cors": true,
+          "integration": {
+            "type": "AWS_PROXY",
+            "http_method": "POST",
+            "uri": "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/${api_handler.arn}/invocations"
+          }
+        }
+      },
+      "/tables/{tableId}": {
+        "GET": {
+          "authorization_type": "COGNITO_USER_POOLS",
+          "authorizer_id": "CognitoAuthorizer",
+          "enable_cors": true,
+          "request_parameters": {
+            "method.request.path.tableId": true
+          },
+          "integration": {
+            "type": "AWS_PROXY",
+            "http_method": "POST",
+            "uri": "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/${api_handler.arn}/invocations"
+          }
+        }
+      },
+      "/reservations": {
+        "POST": {
+          "authorization_type": "COGNITO_USER_POOLS",
+          "authorizer_id": "CognitoAuthorizer",
+          "enable_cors": true,
+          "integration": {
+            "type": "AWS_PROXY",
+            "http_method": "POST",
+            "uri": "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/${api_handler.arn}/invocations"
+          }
+        },
+        "GET": {
+          "authorization_type": "COGNITO_USER_POOLS",
+          "authorizer_id": "CognitoAuthorizer",
+          "enable_cors": true,
+          "integration": {
+            "type": "AWS_PROXY",
+            "http_method": "POST",
+            "uri": "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/${api_handler.arn}/invocations"
+          }
+        }
+      }
+    },
+    "authorizers": {
+      "CognitoAuthorizer": {
+        "type": "COGNITO_USER_POOLS",
+        "identity_source": "method.request.header.Authorization",
+        "provider_arns": []
+      }
+    },
+    "dependencies": [
+      {
+        "resource_name": "api_handler",
+        "resource_type": "lambda_function"
+      },
+      {
+        "resource_name": "simple-booking-userpool",
+        "resource_type": "cognito_user_pool"
+      }
+    ]
+  },
+
+  "api-ui-hoster": {
+    "resource_type": "s3_bucket",
+    "name": "api-ui-hoster",
+    "website": true,
+    "public_access_block": {
+      "block_public_acls": true,
+      "ignore_public_acls": true,
+      "block_public_policy": false,
+      "restrict_public_buckets": false
+    },
+    "policy": {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Effect": "Allow",
+          "Principal": "*",
+          "Action": "s3:GetObject",
+          "Resource": "arn:aws:s3:::api-ui-hoster/*",
+          "Condition": {
+            "IpAddress": {
+              "aws:SourceIp": [
+                "18.197.177.98/32",
+                "ТВОЙ_VPN_IP/32"   // ← добавь свой IP с whatismyip.com через VPN
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+
+  "task13_api_ui": {
+    "resource_type": "swagger_ui",
+    "name": "task13_api_ui",
+    "oas_file": "./export/task13_api.json",
+    "s3_bucket": "api-ui-hoster"
+  }
+}
